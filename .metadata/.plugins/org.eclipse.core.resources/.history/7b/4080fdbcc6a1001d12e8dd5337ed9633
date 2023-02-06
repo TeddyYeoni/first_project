@@ -1,0 +1,70 @@
+package com.dao.diary;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import com.common.ConnectionUtil;
+import com.domain.diary.DiaryVO;
+
+public class DiaryDAO {
+
+	private DataSource dataSource;
+
+	public DiaryDAO() {
+		dataSource = ConnectionUtil.getDataSource();
+	}
+
+	public List<DiaryVO> lookupList() {
+		String query = "select * from mou_diary";
+		List<DiaryVO> diaryList = new ArrayList<DiaryVO>();
+		try (Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				ResultSet rs = pstmt.executeQuery();) {
+			while (rs.next()) {
+				DiaryVO vo = DiaryVO.builder().writeDate(rs.getDate("writeDate")).todayWeather(rs.getString("todayWeather"))
+						.todayEmotion(rs.getString("todayEmotions")).praise(rs.getString("praise")).thanks(rs.getString("thanks"))
+						.build();
+				diaryList.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return diaryList;
+	}
+
+	public int writeDiary(DiaryVO vo) {
+
+		return 0;
+	}
+
+	public DiaryVO diaryDetail(int dno) {
+
+		return null;
+	}
+
+	public int getNewDno() {
+		int diaryNO = 0;
+		String query = "select max(dno)+1 as diaryNO from mou_diary";
+		try (Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				ResultSet rs = pstmt.executeQuery();) {
+			if (rs.next()) {
+				diaryNO = rs.getInt("diaryNO");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return diaryNO;
+	}
+
+	public void deleteDiary(int dno) {
+
+	}
+
+}

@@ -1,0 +1,50 @@
+package com.controller.todo;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/todo/*")
+public class TodoListController extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandler(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doHandler(request, response);
+	}
+
+	protected void doHandler(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String pathInfo = request.getPathInfo();
+		String contextPath = request.getContextPath();
+		final String PREFIX = "/WEB-INF/views/todo/";
+		final String SUFFIX = ".jsp";
+
+		RequestDispatcher rd = null;
+		String nextPage = null;
+		
+		if (pathInfo == null || pathInfo.equals("/") || pathInfo.equals("/todo")) {
+			nextPage = "list";
+		} 
+		
+		else if (pathInfo.equals("/addForm")) {
+			
+			nextPage = "addForm";
+		}
+		
+		else {
+			System.out.println("잘못된 페이지입니다.");
+		}
+		
+		rd = request.getRequestDispatcher(PREFIX + nextPage + SUFFIX);
+		rd.forward(request, response);
+	}
+
+}

@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+/* 배경화면 */
+/* body {
+	background-image: url(../img/moon.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: center;
+	min-height: 1000px;
+	position: relative;
+} */
+
+/* footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%
+} */
+/* loginForm.jsp 로그인 폼 */
+.loginuser_image img {
+	width: 200px
+}
+
+.login_form {
+	width: 300px
+}
+
+/* joinFomr.jsp 회원가입 폼 */
+.join_form {
+	width: 500px
+}
+
+.preview{
+	min-width:200px,
+	max-width:500px
+}
+

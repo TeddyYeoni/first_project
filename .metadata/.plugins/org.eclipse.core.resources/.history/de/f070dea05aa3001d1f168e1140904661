@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@ include file="../layout/header.jsp"%>
+<script src="${contextPath}/resources/js/album/list.js"></script>
+<style>
+.holder {
+	min-height: 100vh;
+}
+
+body {
+	background: #f4f4f4;
+}
+
+.banner {
+	background: #a770ef;
+	background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+	background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+}
+
+.icon img {
+	max-width: 50px;
+	max-height: 50px;
+	object-fit: cover;
+}
+</style>
+
+<div class="holder container-fluid">
+	<div class="px-lg-5">
+		<div class="text-center my-5">
+			<h2>Album</h2>
+		</div>
+		<div class="text-center my-3">
+			<p>나만의 소중한 순간 저장하기🎈</p>
+		</div>
+		<div>
+			<a href="${contextPath}/album/uploadForm"
+				class="btn btn-outline-success my-3 addPhotoBtn">Upload</a>
+		</div>
+		<div class="d-flex justify-content-between">
+			<div class="icon mx-3" style="align-items: center; display: flex;">
+				<img src="${contextPath}/resources/img/icon/icon_prev.png">
+			</div>
+			<div class="row">
+				<c:forEach items="${album_list}" var="album">
+					<input type="hidden" name="ano" value="${album.ano}">
+					<!-- Gallery item -->
+					<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+						<div class="bg-white rounded shadow-sm">
+							<img
+								src="${contextPath}/fileDownload?no=${album.ano}&imageFileName=${album.imageFileName}&path=album"
+								alt="" class="img-fluid card-img-top">
+							<div class="p-4">
+								<div
+									class="badge badge-primary px-3 rounded-pill font-weight-normal"
+									style="float: right;">${album.uploadDate}</div>
+								<h5>
+									<a href="${contextPath}/album/detail?ano=${album.ano}"
+										class="text-dark">${album.title}</a>
+								</h5>
+								<p class="small text-muted mb-0">${album.content}</p>
+							</div>
+						</div>
+					</div>
+					<!-- End -->
+				</c:forEach>
+
+			</div>
+			<div class="icon mx-3" style="align-items: center; display: flex;">
+				<img src="${contextPath}/resources/img/icon/icon_next.png">
+			</div>
+		</div>
+
+
+	</div>
+
+</div>
+
+<%@ include file="../layout/footer.jsp"%>

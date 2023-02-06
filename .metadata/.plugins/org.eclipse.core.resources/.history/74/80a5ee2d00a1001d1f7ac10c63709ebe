@@ -1,0 +1,5 @@
+package com.domain.diary;
+
+public class EmotionVO {
+
+}

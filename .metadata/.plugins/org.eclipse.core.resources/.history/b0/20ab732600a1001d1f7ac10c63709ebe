@@ -1,0 +1,8 @@
+package com.domain.diary;
+
+import com.domain.diary.DiaryVO.Weather;
+
+public class WeatherVO {
+	private String todayWeather;
+	private Weather weather;
+}

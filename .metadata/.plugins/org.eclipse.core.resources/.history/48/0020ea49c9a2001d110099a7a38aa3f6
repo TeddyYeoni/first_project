@@ -1,0 +1,38 @@
+package com.domain.diary;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Builder
+public class DiaryVO {
+
+	private int dno;
+	private String content;
+	private String todayWeather;
+	private String todayEmotion;
+	private String praise;
+	private String thanks;
+	private Date writeDate;
+	private Weather weather;
+	private Emotion emotion;
+
+	public enum Weather {
+		SUNNY, CLOUDY, FOGGY, WINDY, RAINY, SNOWY, HOT, COLD
+	}
+
+	public enum Emotion {
+		WELL, BAD, GLAD, DEPRESSED, SAD, UPSET, PAIN
+	}
+
+}

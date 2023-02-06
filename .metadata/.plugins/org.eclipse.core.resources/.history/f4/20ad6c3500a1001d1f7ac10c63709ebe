@@ -1,0 +1,8 @@
+package com.domain.diary;
+
+import com.domain.diary.DiaryVO.Emotion;
+
+public class EmotionVO {
+	private String todayEmotion;
+	private Emotion emotion;
+}
