@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.diary.DiaryDAO;
+import com.domain.board.BoardVO;
 import com.domain.diary.DiaryVO;
 import com.service.diary.DiaryService;
 
@@ -66,8 +67,8 @@ public class DiaryController extends HttpServlet {
 		}
 		// 다이어리 추가
 		else if (pathInfo.equals("/newDiary")) {
-			DiaryVO vo = DiaryVO.builder().content(request.getParameter("content"))
-					.weather(request.getParameter("weather"))
+			DiaryVO vo = DiaryVO.builder().writer(request.getParameter("writer"))
+					.content(request.getParameter("content")).weather(request.getParameter("weather"))
 					.emotion(request.getParameter("emotion")).praise(request.getParameter("praise"))
 					.thanks(request.getParameter("thanks")).build();
 			service.newDiary(vo);
@@ -76,10 +77,17 @@ public class DiaryController extends HttpServlet {
 		}
 		// 다이어리 상세
 		else if (pathInfo.equals("/detail")) {
-			int paramDno = Integer.parseInt(request.getParameter("dno"));
-			DiaryVO diary = service.diaryDetail(paramDno);
+			String paramDno = request.getParameter("dno");
+			int dno = Integer.parseInt(paramDno);
+			DiaryVO diary = service.diaryDetail(dno);
 			request.setAttribute("diary", diary);
 			nextPage = "detail";
+		}
+		// 다이어리 삭제
+		else if (pathInfo.equals("/delete")) {
+			int paramDno = Integer.parseInt(request.getParameter("dno"));
+			service.removeDiary(paramDno);
+			response.sendRedirect("/list");
 		} else {
 			System.out.println("잘못된 페이지입니다.");
 		}

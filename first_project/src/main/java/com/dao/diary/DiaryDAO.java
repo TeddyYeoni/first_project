@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.common.ConnectionUtil;
+import com.domain.board.BoardVO;
 import com.domain.diary.DiaryVO;
 
 public class DiaryDAO {
@@ -26,10 +27,10 @@ public class DiaryDAO {
 				PreparedStatement pstmt = conn.prepareStatement(query);
 				ResultSet rs = pstmt.executeQuery();) {
 			while (rs.next()) {
-				DiaryVO vo = DiaryVO.builder().dno(rs.getInt("dno")).content(rs.getString("content"))
-						.writeDate(rs.getDate("writeDate")).weather(rs.getString("weather"))
-						.emotion(rs.getString("emotion")).praise(rs.getString("praise"))
-						.thanks(rs.getString("thanks")).build();
+				DiaryVO vo = DiaryVO.builder().dno(rs.getInt("dno")).writer(rs.getString("writer"))
+						.content(rs.getString("content")).writeDate(rs.getDate("writeDate"))
+						.weather(rs.getString("weather")).emotion(rs.getString("emotion"))
+						.praise(rs.getString("praise")).thanks(rs.getString("thanks")).build();
 				diaryList.add(vo);
 			}
 		} catch (Exception e) {
@@ -39,15 +40,16 @@ public class DiaryDAO {
 	}
 
 	public int writeDiary(DiaryVO vo) {
-		String query = "insert into mou_diary(dno,content,weather,emotion,praise,thanks) values(?,?,?,?,?,?)";
+		String query = "insert into mou_diary(dno,writer,content,weather,emotion,praise,thanks) values(?,?,?,?,?,?,?)";
 		int diaryNO = getNewDno();
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
 			pstmt.setInt(1, diaryNO);
-			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getWeather());
-			pstmt.setString(4, vo.getEmotion());
-			pstmt.setString(5, vo.getPraise());
-			pstmt.setString(6, vo.getThanks());
+			pstmt.setString(2, vo.getWriter());
+			pstmt.setString(3, vo.getContent());
+			pstmt.setString(4, vo.getWeather());
+			pstmt.setString(5, vo.getEmotion());
+			pstmt.setString(6, vo.getPraise());
+			pstmt.setString(7, vo.getThanks());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,8 +58,22 @@ public class DiaryDAO {
 	}
 
 	public DiaryVO diaryDetail(int dno) {
-
-		return null;
+		DiaryVO vo = null;
+		String query = "select * from mou_diary where dno=?";
+		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
+			pstmt.setInt(1, dno);
+			try (ResultSet rs = pstmt.executeQuery();) {
+				if (rs.next()) {
+					vo = DiaryVO.builder().dno(rs.getInt("dno")).writer(rs.getString("writer"))
+							.content(rs.getString("content")).writeDate(rs.getDate("writeDate"))
+							.weather(rs.getString("weather")).emotion(rs.getString("emotion"))
+							.praise(rs.getString("praise")).thanks(rs.getString("thanks")).build();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 	public int getNewDno() {
@@ -77,7 +93,13 @@ public class DiaryDAO {
 	}
 
 	public void deleteDiary(int dno) {
-
+		String query = "delete from mou_diary where dno=?";
+		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
+			pstmt.setInt(1, dno);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

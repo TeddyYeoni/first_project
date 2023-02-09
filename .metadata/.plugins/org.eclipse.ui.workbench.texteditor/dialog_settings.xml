@@ -6,15 +6,15 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="ul"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="auth"/>
+			<item value="bno"/>
 			<item value="ul"/>
 			<item value="sideForm"/>
-			<item value="auth"/>
 			<item value="none"/>
 			<item value="#"/>
 			<item value="title"/>
-			<item value="bno"/>
 			<item value="board"/>
 			<item value="boad"/>
 			<item value="boardal"/>

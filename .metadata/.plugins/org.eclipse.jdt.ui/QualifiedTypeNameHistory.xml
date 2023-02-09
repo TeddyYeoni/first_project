@@ -23,8 +23,6 @@
     <fullyQualifiedTypeName name="lombok.experimental.WithBy"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
     <fullyQualifiedTypeName name="com.common.ConnectionUtil"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.dao.diary.DiaryDAO"/>
     <fullyQualifiedTypeName name="com.service.DiaryService"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
@@ -48,7 +46,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="com.domain.diary.DiaryVO.Emotion"/>
     <fullyQualifiedTypeName name="com.domain.diary.EmotionVO"/>
-    <fullyQualifiedTypeName name="com.domain.diary.DiaryVO"/>
     <fullyQualifiedTypeName name="com.controller.MainCotroller"/>
     <fullyQualifiedTypeName name="com.service.board.BoardService"/>
     <fullyQualifiedTypeName name="com.service.qna.QnaService"/>
@@ -56,8 +53,11 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.domain.Criteria"/>
-    <fullyQualifiedTypeName name="com.domain.board.BoardVO"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.dao.qna.QnaDAO"/>
     <fullyQualifiedTypeName name="com.domain.qna.QnaVO"/>
+    <fullyQualifiedTypeName name="com.domain.board.BoardVO"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="com.domain.diary.DiaryVO"/>
 </qualifiedTypeNameHistroy>

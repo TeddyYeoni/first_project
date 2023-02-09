@@ -21,36 +21,38 @@
 		<a href="${contextPath}/diary/writeForm"
 			class="btn btn-outline-primary">New</a>
 	</div>
-	<div class="container bootstrap snippets bootdeys">
-		<div class="row">
-			<c:forEach items="${diary_list}" var="d">
-				<div class="col-md-4 col-sm-6 content-card">
-					<div class="card-big-shadow">
-						<div class="card card-just-text" data-background="color"
-							data-color="brown" data-radius="none">
-							<div class="content">
-								<h6 class="category">
-									<b>Weather</b>&nbsp;&nbsp;${d.weather}
-								</h6>
-								<h6 class="category">
-									<b>Emotion</b>&nbsp;&nbsp;${d.emotion}
-								</h6>
-								<br>
-								<h4 class="title">
-									<a href="${d.dno}">${d.writeDate}</a>
-								</h4>
-								<b class="category">Praise</b><br>
-								<p class="description">${d.praise}</p>
-								<b class="category">Thanks</b><br>
-								<p class="description">${d.thanks}</p>
+	<form id="listForm">
+		<div class="container bootstrap snippets bootdeys">
+			<div class="row">
+				<c:forEach items="${diary_list}" var="d">
+					<div class="col-md-4 col-sm-6 content-card">
+						<div class="card-big-shadow">
+							<div class="card card-just-text" data-background="color"
+								data-color="brown" data-radius="none">
+								<div class="content">
+									<h6 class="category">
+										<b>Weather</b>&nbsp;&nbsp;${d.weather}
+									</h6>
+									<h6 class="category">
+										<b>Emotion</b>&nbsp;&nbsp;${d.emotion}
+									</h6>
+									<br>
+									<h4 class="title">
+										<a href="${d.dno}" class="d_title">${d.writeDate}</a>
+									</h4>
+									<b class="category">Praise</b><br>
+									<p class="description">${d.praise}</p>
+									<b class="category">Thanks</b><br>
+									<p class="description">${d.thanks}</p>
+								</div>
 							</div>
+							<!-- end card -->
 						</div>
-						<!-- end card -->
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
-	</div>
+	</form>
 
 </div>
 

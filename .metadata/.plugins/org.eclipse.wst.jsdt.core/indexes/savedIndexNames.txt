@@ -4,6 +4,4 @@ INDEX VERSION 1.4+C:\Users\s\toy_project\.metadata\.plugins\org.eclipse.wst.jsdt
 493397967.index
 4010727911.index
 2833267527.index
-3243888670.index
 1226672734.index
-2340897156.index

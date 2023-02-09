@@ -9,6 +9,8 @@
 	</div>
 
 	<form action="${contextPath}/diary/newDiary" method="post">
+		<input type="hidden" name="writer" value="${auth.id}">
+		${auth.id}
 		<div class="form-group">
 			<b>Date</b>&nbsp;&nbsp;&nbsp;<b>${todayDate}</b>
 		</div>
@@ -25,14 +27,13 @@
 
 		</div>
 		<div class="my-3">
-			<b>Emotion</b> <input type="checkbox" class="mx-2"
-				name="emotion" value="WELL">☺&nbsp; <input
-				type="checkbox" class="mx-2" name="emotion" value="BAD">🤢&nbsp;
-			<input type="checkbox" class="mx-2" name="emotion" value="GLAD">🥰&nbsp;
-			<input type="checkbox" class="mx-2" name="emotion"
-				value="DEPRESSED">☹&nbsp; <input type="checkbox"
-				class="mx-2" name="emotion" value="SAD">😭&nbsp; <input
-				type="checkbox" class="mx-2" name="emotion" value="UPSET">😡&nbsp;
+			<b>Emotion</b> <input type="checkbox" class="mx-2" name="emotion"
+				value="WELL">☺&nbsp; <input type="checkbox" class="mx-2"
+				name="emotion" value="BAD">🤢&nbsp; <input type="checkbox"
+				class="mx-2" name="emotion" value="GLAD">🥰&nbsp; <input
+				type="checkbox" class="mx-2" name="emotion" value="DEPRESSED">☹&nbsp;
+			<input type="checkbox" class="mx-2" name="emotion" value="SAD">😭&nbsp;
+			<input type="checkbox" class="mx-2" name="emotion" value="UPSET">😡&nbsp;
 			<input type="checkbox" class="mx-2" name="emotion" value="PAIN">🤒&nbsp;
 		</div>
 		<div class="form-group">

@@ -18,6 +18,7 @@ import lombok.ToString;
 public class DiaryVO {
 
 	private int dno;
+	private String writer;
 	private String content;
 	private String weather;
 	private String emotion;

@@ -2,23 +2,24 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp"%>
+<script src="${contextPath}/resources/js/diary/detail.js"></script>
 
 <div class="container">
 	<div class="jumbotron">
 		<h1>Diary</h1>
 	</div>
-	<form id="viewForm" enctype="multipart/form-data">
-		<input type="hidden" name="bno" value="${diary.bno}">
+	<form id="viewForm">
 		<table class="table">
+			<input type="hidden" name="dno" value="${diary.dno}">
 			<tr>
 				<th><b>Date</b></th>
 				<td colspan="3">${diary.writeDate}</td>
 			</tr>
 			<tr>
 				<th><b>Weather</b></th>
-				<td>${diary.todayWeather}</td>
+				<td>${diary.weather}</td>
 				<th>Emotion</th>
-				<td>${diary.todayEmotion}</td>
+				<td>${diary.emotion}</td>
 			</tr>
 			<tr>
 				<th><b>Diary</b></th>
@@ -29,12 +30,12 @@
 				<td colspan="4" class="text-right">
 					<button type="button" class="btn btn-outline-dark toList">
 						<b>Back</b>
-					</button> <c:if test="${auth.id eq board.writer}">
+					</button> <c:if test="${auth.id eq diary.writer}">
 						<button type="button" class="btn btn-outline-success toModForm">
 							<b>Edit</b>
 						</button>
 					</c:if> <c:if
-						test="${auth.id eq board.writer or auth.grade eq 'ASTRONAUT'}">
+						test="${auth.id eq diary.writer or auth.grade eq 'ASTRONAUT'}">
 						<button type="button" class="btn btn-outline-danger remove">
 							<b>Delete</b>
 						</button>
@@ -43,7 +44,7 @@
 			</tr>
 
 			<tr class="viewMode">
-				<c:if test="${auth.id eq board.writer or auth.grade eq 'ASTRONAUT'}">
+				<c:if test="${auth.id eq diary.writer or auth.grade eq 'ASTRONAUT'}">
 					<td colspan="4" class="text-right">
 						<button type="button" class="btn btn-outline-primary modify">
 							<b>EDIT</b>
