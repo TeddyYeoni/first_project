@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.common.ConnectionUtil;
+import com.domain.Criteria;
 import com.domain.album.AlbumVO;
 
 public class AlbumDAO {
@@ -20,17 +21,24 @@ public class AlbumDAO {
 	}
 
 	// 사진 목록
-	public List<AlbumVO> lookUpList() {
-		String query = "select * from mou_album order by ano desc";
+	public List<AlbumVO> lookUpList(Criteria criteria) {
+		String query = "SELECT ROWNUM, ANO, TITLE, CONTENT, IMAGEFILENAME, UPLOADDATE";
+		query += " FROM (SELECT /*+INDEX_DESC(mou_album PK_ALBUM)*/";
+		query += " ROWNUM AS RN, ANO, TITLE, CONTENT, IMAGEFILENAME, UPLOADDATE";
+		query += " FROM mou_album WHERE ROWNUM <= ?) WHERE RN > ?";
 		List<AlbumVO> albumList = new ArrayList<AlbumVO>();
-		try (Connection conn = dataSource.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(query);
-				ResultSet rs = pstmt.executeQuery();) {
-			while (rs.next()) {
-				AlbumVO vo = AlbumVO.builder().ano(rs.getInt("ano")).title(rs.getString("title"))
-						.content(rs.getString("content")).uploadDate(rs.getDate("uploadDate"))
-						.imageFileName(rs.getString("imageFileName")).build();
-				albumList.add(vo);
+		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
+			int minRow = (criteria.getNowPageNum() - 1) * criteria.getPagingAmount();
+			int maxRow = criteria.getNowPageNum() * criteria.getPagingAmount();
+			pstmt.setInt(1, maxRow);
+			pstmt.setInt(2, minRow);
+			try (ResultSet rs = pstmt.executeQuery();) {
+				while (rs.next()) {
+					AlbumVO vo = AlbumVO.builder().ano(rs.getInt("ano")).title(rs.getString("title"))
+							.content(rs.getString("content")).uploadDate(rs.getDate("uploadDate"))
+							.imageFileName(rs.getString("imageFileName")).build();
+					albumList.add(vo);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -89,22 +97,6 @@ public class AlbumDAO {
 		return albumNO;
 	}
 
-	// 내용 수정
-	public void modifyAlbum(AlbumVO vo) {
-		int ano = vo.getAno();
-		String query = "update mou_album set title=?,content=?,imageFileName=? where ano=?";
-
-		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
-			pstmt.setString(1, vo.getTitle());
-			pstmt.setString(2, vo.getContent());
-			pstmt.setString(3, vo.getImageFileName());
-			pstmt.setInt(4, ano);
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	// 사진 삭제
 	public void deletePhoto(int ano) {
 		String query = "delete from mou_album where ano=?";
@@ -114,6 +106,23 @@ public class AlbumDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	// 총 사진 갯수
+	public int getTotalCount() {
+		String query = "select count(ano) as count from mou_album";
+		int totalCount = 0;
+		try (Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				ResultSet rs = pstmt.executeQuery();) {
+			if (rs.next()) {
+				totalCount = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return totalCount;
 	}
 
 }

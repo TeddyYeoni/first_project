@@ -18,9 +18,9 @@ body {
 	background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
 }
 
-.icon img {
-	max-width: 50px;
-	max-height: 50px;
+.row img {
+	height: 300px;
+	width: 450px;
 	object-fit: cover;
 }
 </style>
@@ -35,43 +35,38 @@ body {
 			<a href="${contextPath}/album/uploadForm"
 				class="btn btn-outline-success my-3 addPhotoBtn">Upload</a>
 		</div>
-		<div class="d-flex justify-content-between">
-			<div class="icon mx-3" style="align-items: center; display: flex;">
-				<img src="${contextPath}/resources/img/icon/icon_prev.png">
-			</div>
-			<div class="row">
-				<c:forEach items="${album_list}" var="album">
-					<input type="hidden" name="ano" value="${album.ano}">
-					<!-- Gallery item -->
-					<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-						<div class="bg-white rounded shadow-sm">
-							<img
-								src="${contextPath}/fileDownload?no=${album.ano}&imageFileName=${album.imageFileName}&path=album"
-								alt="" class="img-fluid card-img-top">
-							<div class="p-4">
-								<div
-									class="badge badge-primary px-3 rounded-pill font-weight-normal"
-									style="float: right;">${album.uploadDate}</div>
-								<h5>
-									<a href="${contextPath}/album/detail?ano=${album.ano}"
-										class="text-dark">${album.title}</a>
-								</h5>
-								<p class="small text-muted mb-0">${album.content}</p>
-							</div>
+
+		<div class="row">
+			<c:forEach items="${album_list}" var="album">
+				<input type="hidden" name="ano" value="${album.ano}">
+				<!-- Gallery item -->
+				<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+					<div class="bg-white rounded shadow-sm">
+						<img
+							src="${contextPath}/fileDownload?no=${album.ano}&imageFileName=${album.imageFileName}&path=album"
+							alt="" class="img-fluid card-img-top">
+						<div class="p-4">
+							<div
+								class="badge badge-dark px-3 rounded-pill font-weight-normal"
+								style="float: right;">${album.uploadDate}</div>
+							<h6>
+								<a href="${contextPath}/album/detail?ano=${album.ano}"
+									class="text-dark">${album.title}</a>
+							</h6>
+							<p class="small text-muted mb-0">${album.content}</p>
 						</div>
 					</div>
-					<!-- End -->
-				</c:forEach>
+				</div>
+				<!-- End -->
+			</c:forEach>
 
-			</div>
-			<div class="icon mx-3" style="align-items: center; display: flex;">
-				<img src="${contextPath}/resources/img/icon/icon_next.png">
-			</div>
 		</div>
 
-
 	</div>
-
+	<div class="py-5 text-right">
+		<a href="?nowPageNum=${page.startPage-1}"
+			class="btn btn-dark px-5 py-3 text-uppercase"><h5>Show me more</h5></a>
+	</div>
 </div>
 
 <%@ include file="../layout/footer.jsp"%>

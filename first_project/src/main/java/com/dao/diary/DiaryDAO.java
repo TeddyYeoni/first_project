@@ -20,6 +20,7 @@ public class DiaryDAO {
 		dataSource = ConnectionUtil.getDataSource();
 	}
 
+	// 다이어리 목록
 	public List<DiaryVO> lookupList() {
 		String query = "select * from mou_diary order by dno desc";
 		List<DiaryVO> diaryList = new ArrayList<DiaryVO>();
@@ -39,6 +40,7 @@ public class DiaryDAO {
 		return diaryList;
 	}
 
+	// 다이어리 작성
 	public int writeDiary(DiaryVO vo) {
 		String query = "insert into mou_diary(dno,writer,content,weather,emotion,praise,thanks) values(?,?,?,?,?,?,?)";
 		int diaryNO = getNewDno();
@@ -57,6 +59,7 @@ public class DiaryDAO {
 		return diaryNO;
 	}
 
+	// 다이어리 상세
 	public DiaryVO diaryDetail(int dno) {
 		DiaryVO vo = null;
 		String query = "select * from mou_diary where dno=?";
@@ -76,6 +79,7 @@ public class DiaryDAO {
 		return vo;
 	}
 
+	// 새로운 글번호 생성
 	public int getNewDno() {
 		int diaryNO = 0;
 		String query = "select max(dno) as diaryNO from mou_diary";
@@ -91,7 +95,23 @@ public class DiaryDAO {
 		}
 		return diaryNO;
 	}
-
+	
+	// 다이어리 수정
+	public void modifyDiary(DiaryVO diaryVO) {
+		int dno = diaryVO.getDno();
+		String query = "update mou_diary set content=?, praise=?, thanks=? where dno=?";
+		try(Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {
+			pstmt.setString(1, diaryVO.getContent());
+			pstmt.setString(2, diaryVO.getPraise());
+			pstmt.setString(3, diaryVO.getThanks());
+			pstmt.setInt(4, dno);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 다이어리 삭제
 	public void deleteDiary(int dno) {
 		String query = "delete from mou_diary where dno=?";
 		try (Connection conn = dataSource.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query);) {

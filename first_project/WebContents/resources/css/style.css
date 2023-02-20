@@ -13,3 +13,11 @@
 .join_form {
 	width: 500px;
 }
+
+/* 글씨체 적용 */
+@font-face {
+     font-family: 'DungGeunMo';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}

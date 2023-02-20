@@ -3,6 +3,7 @@ package com.service.album;
 import java.util.List;
 
 import com.dao.album.AlbumDAO;
+import com.domain.Criteria;
 import com.domain.album.AlbumVO;
 
 public class AlbumService {
@@ -13,8 +14,8 @@ public class AlbumService {
 		this.albumDAO = albumDAO;
 	}
 
-	public List<AlbumVO> photoList() {
-		return albumDAO.lookUpList();
+	public List<AlbumVO> photoList(Criteria criteria) {
+		return albumDAO.lookUpList(criteria);
 	}
 	
 	public AlbumVO photoDetail(int ano) {
@@ -28,9 +29,9 @@ public class AlbumService {
 	public void removePhoto(int ano) {
 		albumDAO.deletePhoto(ano);
 	}
-	
-	public void updateAlbum(AlbumVO vo) {
-		albumDAO.modifyAlbum(vo);
-	}
 
+	public int totalCount() {
+		return albumDAO.getTotalCount();
+	}
+	
 }

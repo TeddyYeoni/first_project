@@ -4,6 +4,20 @@
 <%@ include file="../layout/header.jsp"%>
 
 <script src="${contextPath}/resources/js/album/detail.js"></script>
+<style>
+.preview {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.preview img {
+	height: auto;
+	width: auto;
+	max-width: 1000px;
+	object-fit: contain;
+}
+</style>
 
 <div class="container">
 	<div class="jumbotron">
@@ -11,6 +25,19 @@
 	</div>
 	<form id="viewForm" enctype="multipart/form-data">
 		<table class="table">
+			<tr>
+				<div>
+					<td colspan="4"><input type="file" name="imageFileName"
+						class="form-control viewMode">
+						<div class="imageLayout my-3">
+							<input type="hidden" name="originFileName" class="originFileName"
+								value="${album.imageFileName}">
+							<div class="preview">
+								<img class="originImg"
+									src="${contextPath}/fileDownload?no=${album.ano}&imageFileName=${album.imageFileName}&path=album">
+							</div>
+						</div></td>
+			</tr>
 			<tr>
 				<th><b>No</b></th>
 				<td>${album.ano}<input type="hidden" name="ano"
@@ -31,40 +58,12 @@
 						class="form-control" readonly="readonly">${album.content}</textarea></td>
 			</tr>
 			<tr>
-				<div>
-					<th><b>Images</b></th>
-					<td colspan="3"><input type="file" name="imageFileName"
-						class="form-control viewMode">
-						<div class="imageLayout my-3">
-							<input type="hidden" name="originFileName" class="originFileName"
-								value="${album.imageFileName}">
-							<div class="preview">
-								<img class="originImg"
-									src="${contextPath}/fileDownload?no=${album.ano}&imageFileName=${album.imageFileName}&path=album">
-							</div>
-						</div></td>
-			</tr>
-			<tr>
 				<td colspan="4" class="text-right">
 					<button type="button" class="btn btn-outline-dark toList">
 						<b>Back</b>
 					</button>
-					<button type="button" class="btn btn-outline-success toModForm">
-						<b>Edit</b>
-					</button>
 					<button type="button" class="btn btn-outline-danger remove">
 						<b>Delete</b>
-					</button>
-				</td>
-			</tr>
-
-			<tr class="viewMode">
-				<td colspan="4" class="text-right">
-					<button type="button" class="btn btn-outline-primary modify">
-						<b>EDIT</b>
-					</button>
-					<button type="button" class="btn btn-outline-primary backViewMode">
-						<b>BACK</b>
 					</button>
 				</td>
 			</tr>

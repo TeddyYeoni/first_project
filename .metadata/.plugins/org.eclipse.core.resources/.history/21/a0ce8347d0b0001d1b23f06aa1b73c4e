@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/* loginForm.jsp 로그인 폼 */
+.loginuser_image img {
+	width: 200px;
+}
+
+.login_form {
+	width: 300px;
+}
+
+/* joinFomr.jsp 회원가입 폼 */
+.join_form {
+	width: 500px;
+}
+
+/* 글씨체 적용 */
+@font-face{
+  font-family:'bitbit';
+  src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
+}
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+     font-family: 'DungGeunMo';
+     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}

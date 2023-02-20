@@ -1,0 +1,26 @@
+$(function() {
+	$('.viewMode').hide();
+
+	let viewForm = $('#viewForm');
+	let titleObj = $('input[name="title"]');
+	let contentObj = $('textarea[name="content"]');
+
+	// Back 버튼
+	$('.toList').on('click', function() {
+		viewForm.attr({
+			"action": `${contextPath}/album`,
+			"method": "get"
+		}).empty()
+			.submit();
+	});
+
+	// Delete 버튼
+	$('.remove').on('click', function() {
+		viewForm.attr({
+			"action": `${contextPath}/album/delete`,
+			"method": "post"
+		}).submit();
+
+	});
+
+});

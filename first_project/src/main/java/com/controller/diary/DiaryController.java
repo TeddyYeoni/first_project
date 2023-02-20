@@ -83,11 +83,22 @@ public class DiaryController extends HttpServlet {
 			request.setAttribute("diary", diary);
 			nextPage = "detail";
 		}
+		// 다이어리 수정
+		else if (pathInfo.equals("/modify")) {
+			int dno = Integer.parseInt(request.getParameter("dno"));
+			DiaryVO vo = DiaryVO.builder().dno(dno).content(request.getParameter("content"))
+					.praise(request.getParameter("praise")).thanks(request.getParameter("thanks")).build();
+			service.modifyDiary(vo);
+			response.sendRedirect(contextPath + "/diary");
+			return;
+		}
+
 		// 다이어리 삭제
 		else if (pathInfo.equals("/delete")) {
 			int paramDno = Integer.parseInt(request.getParameter("dno"));
 			service.removeDiary(paramDno);
-			response.sendRedirect("/list");
+			response.sendRedirect(contextPath + "/diary");
+			return;
 		} else {
 			System.out.println("잘못된 페이지입니다.");
 		}

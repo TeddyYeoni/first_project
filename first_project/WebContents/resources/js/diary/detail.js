@@ -18,6 +18,8 @@ $(function() {
 	// Edit 버튼
 	$('.toModForm').on('click', function() {
 		$('textarea[name="content"]').attr("readonly", false);
+		$('input[name="praise"]').attr("readonly", false);
+		$('input[name="thanks"]').attr("readonly", false);
 		$('.viewMode').show();
 		$(this).closest('tr').hide();
 	});

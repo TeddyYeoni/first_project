@@ -8,7 +8,6 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.dbcp.dbcp2.PStmtKey"/>
     <fullyQualifiedTypeName name="javax.servlet.jsp.tagext.TryCatchFinally"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.domain.BoardReplyVO"/>
     <fullyQualifiedTypeName name="com.dao.QnaDao"/>
     <fullyQualifiedTypeName name="com.dao.QnaDAO"/>
@@ -35,7 +34,6 @@
     <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
     <fullyQualifiedTypeName name="javax.print.attribute.standard.OrientationRequested"/>
-    <fullyQualifiedTypeName name="com.domain.Pagination"/>
     <fullyQualifiedTypeName name="java.lang.Appendable"/>
     <fullyQualifiedTypeName name="javax.print.DocFlavor.READER"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -50,9 +48,7 @@
     <fullyQualifiedTypeName name="com.service.board.BoardService"/>
     <fullyQualifiedTypeName name="com.service.qna.QnaService"/>
     <fullyQualifiedTypeName name="com.dao.board.BoardDAO"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="com.domain.Criteria"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.dao.qna.QnaDAO"/>
     <fullyQualifiedTypeName name="com.domain.qna.QnaVO"/>
@@ -60,4 +56,8 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="com.domain.diary.DiaryVO"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.domain.Criteria"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.domain.Pagination"/>
 </qualifiedTypeNameHistroy>

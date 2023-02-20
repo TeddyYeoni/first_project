@@ -27,6 +27,12 @@
 						class="form-control" readonly="readonly">${diary.content}</textarea></td>
 			</tr>
 			<tr>
+				<th><b>Praise</b></th>
+				<td><input type="text" name="praise" class="form-control" readonly="readonly" value="${diary.praise}"></td>
+				<th>Thanks</th>
+				<td><input type="text" name="thanks" class="form-control" readonly="readonly" value="${diary.thanks}"></td>
+			</tr>
+			<tr>
 				<td colspan="4" class="text-right">
 					<button type="button" class="btn btn-outline-dark toList">
 						<b>Back</b>
@@ -44,7 +50,7 @@
 			</tr>
 
 			<tr class="viewMode">
-				<c:if test="${auth.id eq diary.writer or auth.grade eq 'ASTRONAUT'}">
+				<c:if test="${auth.id eq diary.writer}">
 					<td colspan="4" class="text-right">
 						<button type="button" class="btn btn-outline-primary modify">
 							<b>EDIT</b>

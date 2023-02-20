@@ -92,18 +92,18 @@ a:hover, a:focus {
 }
 
 /*======== COLORS ===========*/
-.card[data-color="brown"] {
-	background: #d6c1ab;
+.card[data-color="gray"] {
+	background: #b7bab1;
 }
 
-.card[data-color="brown"] .description {
-	color: #75442e;
+.card[data-color="gray"] .description {
+	color: #545454;
 }
 
-.card[data-color="brown"] .category {
-	color: #a47e65;
+.card[data-color="gray"] .category {
+	color: #3f3f3f;
 }
 
-.card[data-color="brown"] .title a {
-	color: #75442e;
+.card[data-color="gray"] .title a {
+	color: #2c2c2c;
 }

@@ -40,31 +40,36 @@
 	align-items: center;
 	display: flex;
 }
+
+body {
+	font-family:'DungGeunMo';
+}
+
 </style>
 <body>
 	<nav class="navbar navbar-expand-sm">
 		<!-- Brand/logo -->
 		<a class="navbar-brand font-weight-bold text-light mx-5"
 			href="${contextPath}/main">
-			<h1>MY ONLY UNIVERSE🌏</h1>
+			<h1>MY ONLY UNIVERSE🚀</h1>
 		</a>
 		<!-- Links -->
-		<ul class="navbar-nav my-2">
+		<ul class="navbar-nav mx-5 my-2">
 			<li class="nav-item"><a
 				class="nav-link font-weight-bold text-light mx-3"
-				href="${contextPath}/todo/"><h3>To Do List📜</h3></a></li>
+				href="${contextPath}/todo/"><h3>To Do List</h3></a></li>
 			<li class="nav-item"><a
 				class="nav-link font-weight-bold text-light mx-3"
-				href="${contextPath}/album/"><h3>Album🎬</h3></a></li>
+				href="${contextPath}/album/"><h3>Album</h3></a></li>
 			<li class="nav-item"><a
 				class="nav-link font-weight-bold text-light mx-3"
-				href="${contextPath}/diary/"><h3>Diary✒</h3></a></li>
+				href="${contextPath}/diary/"><h3>Diary</h3></a></li>
 			<li class="nav-item"><a
 				class="nav-link font-weight-bold text-light mx-3"
-				href="${contextPath}/board/"><h3>Board📋</h3></a></li>
+				href="${contextPath}/board/"><h3>Board</h3></a></li>
 			<li class="nav-item"><a
 				class="nav-link font-weight-bold text-light mx-3"
-				href="${contextPath}/qna/"><h3>Q&A❔</h3></a></li>
+				href="${contextPath}/qna/"><h3>Q&A</h3></a></li>
 		</ul>
 
 

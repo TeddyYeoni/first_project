@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+/* loginForm.jsp 로그인 폼 */
+.loginuser_image img {
+	width: 200px;
+}
+
+.login_form {
+	width: 300px;
+}
+
+/* joinFomr.jsp 회원가입 폼 */
+.join_form {
+	width: 500px;
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

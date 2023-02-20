@@ -24,6 +24,10 @@ public class DiaryService {
 	public DiaryVO diaryDetail(int dno) {
 		return diaryDAO.diaryDetail(dno);
 	}
+	
+	public void modifyDiary(DiaryVO diaryVO) {
+		diaryDAO.modifyDiary(diaryVO);
+	}
 
 	public void removeDiary(int dno) {
 		diaryDAO.deleteDiary(dno);

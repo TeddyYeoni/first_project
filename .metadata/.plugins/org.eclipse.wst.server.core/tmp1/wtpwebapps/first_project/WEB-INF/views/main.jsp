@@ -28,6 +28,13 @@ body {
 	float: right;
 	text-decoration: underline;
 }
+
+.mainImg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border:0.1px solid rgba(255,255,255,0.1);
+}
 </style>
 
 <!-- Page Content -->
@@ -38,9 +45,9 @@ body {
 	<!-- Portfolio Item Row -->
 	<div class="row d-flex justify-content-center">
 
-		<div class="col-md-4 recentList mx-3">
+		<div class="col-md-4 recentList mx-3 my-5">
 			<div class="text-center my-3">
-				<h3 class="sm-b-0">Board📋</h3>
+				<h2 class="sm-b-0">Board📋</h2>
 			</div>
 			<c:forEach items="${recentBoard}" var="board">
 				<ul>
@@ -48,7 +55,7 @@ body {
 						class="fa fa-check-circle w-30px m-t-5"></i>
 						<div class="title">
 							<a href="${contextPath}/board/detail?bno=${board.bno}"
-								class="m-b-0 font-medium p-0" data-abc="true">${board.title}</a>
+								class="m-b-0 font-medium p-0" data-abc="true"><h6>${board.title}</h6></a>
 						</div>
 						<div class="ml-auto">
 							<div class="tetx-right date">
@@ -62,9 +69,9 @@ body {
 			</div>
 		</div>
 
-		<div class="col-md-4 recentList mx-3">
+		<div class="col-md-4 recentList mx-3 my-5">
 			<div class="text-center my-3">
-				<h3 class="sm-b-0">Q&A🖐🏻</h3>
+				<h2 class="sm-b-0">Q&A🖐🏻</h2>
 			</div>
 			<c:forEach items="${recentQna}" var="qna">
 				<ul>
@@ -72,7 +79,7 @@ body {
 						class="fa fa-check-circle w-30px m-t-5"></i>
 						<div class="title">
 							<a href="${contextPath}/qna/detail?qno=${qna.qno}"
-								class="m-b-0 font-medium p-0" data-abc="true"><b>${qna.title}</b></a>
+								class="m-b-0 font-medium p-0" data-abc="true"><h6>${qna.title}</h6></a>
 						</div>
 						<div class="ml-auto">
 							<div class="tetx-right">
@@ -91,26 +98,24 @@ body {
 	<!-- /.row -->
 
 	<!-- Related Projects Row -->
-	<h3 class="my-4 text-center" style="color: rgba(0, 0, 0, 1);">My
-		Space🌍</h3>
 
 	<div class="row d-flex justify-content-center">
 
-		<div class="col-md-3 col-sm-6 mb-4">
-			<a href="#"> <img class="img-fluid"
-				src="https://via.placeholder.com/500x300" alt="">
+		<div class="col-md-3 col-sm-6 mb-4 mainImg">
+			<a href="${contextPath}/todo"> <img class="img-fluid"
+				src="${contextPath}/resources/img/main/ToDoList.png" alt="">
 			</a>
 		</div>
 
-		<div class="col-md-3 col-sm-6 mb-4">
-			<a href="#"> <img class="img-fluid"
-				src="https://via.placeholder.com/500x300" alt="">
+		<div class="col-md-3 col-sm-6 mb-4 mainImg">
+			<a href="${contextPath}/album"> <img class="img-fluid"
+				src="${contextPath}/resources/img/main/album.png" alt="">
 			</a>
 		</div>
 
-		<div class="col-md-3 col-sm-6 mb-4">
-			<a href="#"> <img class="img-fluid"
-				src="https://via.placeholder.com/500x300" alt="">
+		<div class="col-md-3 col-sm-6 mb-4 mainImg">
+			<a href="${contextPath}/diary"> <img class="img-fluid"
+				src="${contextPath}/resources/img/main/diary.png" alt="">
 			</a>
 		</div>
 
